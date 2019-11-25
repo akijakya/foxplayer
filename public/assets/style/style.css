@@ -213,10 +213,13 @@ html, body {
     transform: rotate(180deg);
 }
 
-/* audio {
-    flex: 1 1 90%;
+#control-panel div {
+    flex: 0 0 5%;
 }
 
-audio::-webkit-media-controls-panel {
-    background: #ffffff;
-} */
+.current-time {
+}
+
+.seekbar {
+    flex: 1 1 60%;
+}
