@@ -27,7 +27,7 @@ html, body {
     width: 700px;
     margin: 50px auto;
     background: var(--bg-light-grey);
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
     overflow: hidden;
     display: grid;
