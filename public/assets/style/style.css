@@ -218,11 +218,10 @@ html, body {
     transform: rotate(180deg);
 }
 
-audio {
-    /* height: 30px; */
+/* audio {
     flex: 1 1 90%;
 }
 
 audio::-webkit-media-controls-panel {
     background: #ffffff;
-}
+} */
