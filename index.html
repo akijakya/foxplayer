@@ -10,17 +10,36 @@
 </head>
 <body>
     <div id="grid-container">
-            <div id="album-cover"></div>
-            <div id="currently-playing"></div>
             <div id="fox-logo">
-                <img src='.\public\assets\img\foxplayer.png'>
+                    <img src='.\public\assets\img\foxplayer.png'>
             </div>
-            <div id="playlist"></div>
+            <div id="album-cover"></div>
+            <div id="currently-playing">
+                <div id="current-song-info">
+                    <h1>Title of the track</h1>
+                    <p>Artist</p>
+                </div>
+                <div id="current-buttons">
+                    <img src='./public/assets/img/plus-solid.svg'>
+                    <img src='./public/assets/img/star.svg'>
+                </div>
+            </div>
             <div id="new-playlist">
                 <h1>Playlists</h1>
                 <img src='./public/assets/img/plus-solid.svg'>
             </div>
-            <div id="tracks"></div>
+            <div id="playlist">
+                <ul>
+                    <li>All tracks</li>
+                    <li>Favorites</li>
+                </ul>
+            </div>
+            <div id="tracks">
+                    <ol>
+                        <li>All tracks</li>
+                        <li>Favorites</li>
+                    </ol>
+            </div>
             <div id="control-panel"></div>
     </div>
 </body>
