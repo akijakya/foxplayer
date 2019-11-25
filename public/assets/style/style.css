@@ -8,13 +8,8 @@
   }
 
 html, body { 
-    height: 100%; 
     margin: 0; 
-}
-
-#grid-container * { 
- /* border: 1px solid red; */
- position: relative;
+    padding: 0;
 }
 
 #grid-container {
@@ -210,8 +205,8 @@ html, body {
 }
 
 #control-panel img {
-    flex: 1 1 5%;
-    height: 10px;
+    flex: 0 0 5%;
+    height: 15px;
 }
 
 .previous-button {
