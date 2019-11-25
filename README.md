@@ -4,7 +4,7 @@ A browser based local music player.
 
 ![main ui](public/assets/img/musicplayer.png)
 
-[the grid](https://grid.layoutit.com/?id=o5wYcvS)
+[the grid](https://grid.layoutit.com/?id=fZxYdzd)
 
 Following this exact design is not mandatory, but keep close to the layout and
 maintain all functionality.
