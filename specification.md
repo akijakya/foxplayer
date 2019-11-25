@@ -5,7 +5,7 @@ first two must be implemented as the spec says. The rest is more like a
 recommendation, you can diverge from it if you feel like, but keep in mind you
 have to deliver.
 
-![main ui with labels](img/musicplayer_labelled.png)
+![main ui with labels](public/assets/img/musicplayer_labelled.png)
 
 ## Frontend
 
@@ -108,7 +108,7 @@ Not visible parts:
 - Display the currently playing artist from Last.fm
 - Description is in the stories section
 - If the artist can't be found, use the
-  [music placeholder](img/music-placeholder.png) image instead
+  [music placeholder](public/assets/img/music-placeholder.png) image instead
 
 ### Currently playing
 

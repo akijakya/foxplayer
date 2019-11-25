@@ -22,7 +22,7 @@ Save your experiments in an `experiments` folder.
 
   <https://www.sitepoint.com/essential-audio-and-video-events-for-html5/> -
 - Create an Audio mockup in a separate HTML file
-- Use this MP3 file: [Purple drift](music/Organoid_-_09_-_Purple_Drift.mp3)
+- Use this MP3 file: [Purple drift](public/assets/music/Organoid_-_09_-_Purple_Drift.mp3)
 - Add the following events: `loadstart`, `play`, `ended`, `progress`
 - `console.log` the event name + "happened" to the console
 
