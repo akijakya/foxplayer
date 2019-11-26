@@ -214,10 +214,10 @@ i {
     display: flex;
     align-items: center;
     color: var(--font-color);
+    padding: 0 10px;
 }
 
 #control-panel div {
-    flex: 1 1 5%;
     height: 15px;
     display: flex;
     justify-content: center;
