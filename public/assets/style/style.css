@@ -12,6 +12,10 @@ html, body {
     padding: 0;
 }
 
+i {
+    color: var(--font-secondary);
+}
+
 #grid-container {
     height: 420px;
     width: 700px;
@@ -30,6 +34,8 @@ html, body {
 #currently-playing { 
     grid-area: 1 / 6 / 3 / 12; 
     display: flex;
+    margin: 0;
+    padding: 0 10px 0 15px;
 }
 
 #current-song-info {
@@ -37,7 +43,6 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 10px;
     box-sizing: border-box;
 }
 
@@ -61,11 +66,12 @@ html, body {
     align-items: center;
 }
 
-#current-buttons img {
-    height: 20px;
+#current-buttons div {
+    padding: 0;
+    margin: 0;
 }
 
-#current-buttons img:nth-of-type(2n) {
+#current-buttons div:nth-of-type(2n) {
     padding-left: 5px;
 }
 
@@ -97,12 +103,17 @@ html, body {
 #new-playlist h1 {
     font-size: 20px;
     color: var(--font-color);
-    width: 90%;
+    flex: 1 1 90%;
     margin: 0;
 }
 
-#new-playlist img {
-    width: 10%;
+#new-playlist div {
+    flex: 1 1 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
 #playlist { 
@@ -204,12 +215,15 @@ html, body {
     align-items: center;
 }
 
-#control-panel img {
-    flex: 0 0 5%;
+#control-panel div {
+    flex: 1 1 5%;
     height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.previous-button {
+#previous-button {
     transform: rotate(180deg);
 }
 
@@ -217,9 +231,12 @@ html, body {
     flex: 0 0 5%;
 }
 
-.current-time {
+#seekbar {
+    flex: 1 1 50%;
+    width: 100px;
 }
 
-.seekbar {
-    flex: 1 1 60%;
+#volume-bar {
+    flex: 1 1 10%;
+    width: 30px;
 }

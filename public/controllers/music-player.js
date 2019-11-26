@@ -7,15 +7,15 @@ let audio = document.getElementsByTagName('audio')[0];
 function playPause () {
     if(audio.paused) {
         audio.play();
-        playButton.src = './public/assets/img/pause.svg';
+        playButton.className = 'fas fa-pause';
     } else {
         audio.pause();
-        playButton.src = './public/assets/img/play.svg';
+        playButton.className = 'fas fa-play';
     }
 }
 
 // triggered when pressed the play button
-let playButton = document.getElementsByClassName('play-button')[0];
+let playButton = document.getElementById('play-button').getElementsByTagName('i')[0];
 playButton.addEventListener('click', () => playPause(), false);
 
 // triggered when pressed the space bar
@@ -28,13 +28,13 @@ document.body.onkeyup = function(e){
 // in some browsers, when a track ends, it doesn't set the audio to paused mode, thats why:
 audio.addEventListener('ended', function(e) {
   audio.pause();
-  playButton.src = './public/assets/img/play.svg';
+  playButton.className = 'fas fa-play';
 }, false);
 
 // DISPLAYING CURRENT TIME AND DURATION
 
-let currentTime = document.getElementsByClassName('current-time')[0];
-let currentDuration = document.getElementsByClassName('current-duration')[0]; 
+let currentTime = document.getElementById('current-time');
+let currentDuration = document.getElementById('current-duration'); 
 
 audio.addEventListener('durationchange', function () {
     let s = parseInt(audio.duration % 60);

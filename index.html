@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Foxplayer</title>
     <link rel="stylesheet" href="public/assets/style/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/font-awesome.css"> -->
+    <script src="https://kit.fontawesome.com/8d0377eb4c.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -20,13 +21,15 @@
                     <p>Artist</p>
                 </div>
                 <div id="current-buttons">
-                    <img src='./public/assets/img/plus-solid.svg'>
-                    <img src='./public/assets/img/star.svg'>
+                    <!-- <img src='./public/assets/img/plus-solid.svg'>
+                    <img src='./public/assets/img/star.svg'> -->
+                    <div class="plus-sign"><i class="fas fa-plus"></i></div>
+                    <div class="heart-empty-sign"><i class="far fa-heart"></i></div>
                 </div>
             </div>
             <div id="new-playlist">
                 <h1>Playlists</h1>
-                <img src='./public/assets/img/plus-solid.svg'>
+                <div class="plus-sign"><i class="fas fa-plus"></i></div>
             </div>
             <div id="playlist">
                 <ul>
@@ -64,12 +67,14 @@
                     <source src="./public/assets/music/Organoid_-_09_-_Purple_Drift.mp3">
                     Your browser does not support the <code>audio</code> element.
                 </audio>
-                <img class='previous-button' src='./public/assets/img/forward.svg'>
-                <img class='play-button' src='./public/assets/img/play.svg'>
-                <img class='next-button' src='./public/assets/img/forward.svg'>
-                <div class='current-time'>0:00</div>
-                <div class='seekbar'></div>
-                <div class='current-duration'></div>
+                <div id="previous-button"><i class="fas fa-forward"></i></div>
+                <div id="play-button"><i class="fas fa-play"></i></div>
+                <div id="next-button"><i class="fas fa-forward"></i></div>
+                <div id='current-time'>0:00</div>
+                <input type='range' min='0' max='100' value='0' id='seekbar'>
+                <div id='current-duration'></div>
+                <div id="volume-button"><i class="fas fa-volume-down"></i></div>
+                <input type='range' min='0' max='100' value='50' id='volume-bar'>
 
             </div>
     </div>
