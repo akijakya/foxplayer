@@ -131,7 +131,7 @@ files.forEach(function (e) {
     }
 });
 
-app.get('/playlist-tracks', async function(req, res) {
+app.get('/playlist-tracks', function(req, res) {
     let trackNamePromises = [];
 
     trackNames.forEach(function(e) {
