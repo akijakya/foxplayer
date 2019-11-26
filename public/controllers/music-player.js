@@ -55,3 +55,8 @@ audio.addEventListener("timeupdate", function() {
         currentTime.innerHTML = m + ":" + s;
     }
 }, false);
+
+// SEEKBAR AND VOLUME BAR
+
+let seekBar = document.querySelector('#seekbar');
+let volumeBar = document.querySelector('#volume-bar');
