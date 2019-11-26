@@ -99,11 +99,54 @@ app.delete('/playlists/:id', function(req, res) {
 
 // GETTING INFO ABOUT THE TRACKS IN THE MUSIC FOLDER
 
-const musicPath = 'assets/music/';
+const trackPath = 'public/assets/music/';
 
 const fs = require('fs');
+const mm = require('musicmetadata');
+
+let trackData = function(filename) {
+    return new Promise (function(resolve, reject) {
+        let readableStream = fs.createReadStream(path.join(__dirname, trackPath + filename));
+        mm(readableStream, { duration: true }, function (err, metadata) {
+            if (err) throw err;
+            readableStream.close();
+            resolve(metadata);
+        });
+    });
+}
+
+// async function getTrackData (filename) {
+//     let result = await trackData(filename);
+//     console.log(result);
+// };
+
+// getTrackData('Organoid_-_09_-_Purple_Drift.mp3');
+
+// getting the track names in the music folder
 const files = fs.readdirSync(path.join(__dirname, 'public/assets/music'));
-console.log(files);
+let trackNames = [];
+files.forEach(function (e) {
+    if (e.slice(-2) !== 'MD') {
+        trackNames.push(e);
+    }
+});
+
+app.get('/playlist-tracks', async function(req, res) {
+    // connection.query('SELECT * FROM playlists;', function(err, result) {
+    //     if (err) {
+    //         res.status(500).send('Database error');
+    //         return;
+    //     }
+    //     res.status(200);
+    //     res.setHeader("Content-type", "application/json");
+    //     res.send(result);
+    // });
+    
+    let result = await trackData('Organoid_-_09_-_Purple_Drift.mp3')
+    res.status(200);
+    res.setHeader("Content-type", "application/json");
+    res.send(result);
+});
 
 // app.put('/posts/:id/upvote', function(req, res) {
 //     connection.query(`UPDATE posts SET score = score + 1 WHERE id = ?;`, [req.params.id], function(err, result) {
