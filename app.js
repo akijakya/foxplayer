@@ -39,9 +39,13 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.get('/hello', function (req, res) {
-    res.send('hello world');
-});
+function updateTracks () {
+    
+}
+
+// app.get('/hello', function (req, res) {
+//     res.send('hello world');
+// });
 
 // app.get('/posts', function(req, res) {
 //     console.log(req.headers);
