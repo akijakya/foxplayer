@@ -1,0 +1,13 @@
+CREATE TABLE `playlists` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`playlist` TINYTEXT,
+	`system` TINYINT(1) DEFAULT '0',
+	PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `tracks` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`path` TINYTEXT,
+	`playlist_id` INT,
+	PRIMARY KEY (`id`)
+);
