@@ -39,9 +39,6 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-function updateTracks () {
-    
-}
 
 // app.get('/hello', function (req, res) {
 //     res.send('hello world');
@@ -99,6 +96,14 @@ app.delete('/playlists/:id', function(req, res) {
         }
     });
 });
+
+// GETTING INFO ABOUT THE TRACKS IN THE MUSIC FOLDER
+
+const musicPath = 'assets/music/';
+
+const fs = require('fs');
+const files = fs.readdirSync(path.join(__dirname, 'public/assets/music'));
+console.log(files);
 
 // app.put('/posts/:id/upvote', function(req, res) {
 //     connection.query(`UPDATE posts SET score = score + 1 WHERE id = ?;`, [req.params.id], function(err, result) {
