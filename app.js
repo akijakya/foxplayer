@@ -47,18 +47,18 @@ function updateTracks () {
 //     res.send('hello world');
 // });
 
-// app.get('/posts', function(req, res) {
-//     console.log(req.headers);
-//     connection.query('SELECT * FROM posts;', function(err, result) {
-//         if (err) {
-//             res.status(500).send('Database error');
-//             return;
-//         }
-//         res.status(200);
-//         res.setHeader("Content-type", "application/json");
-//         res.send({"posts": result});
-//     });
-// });
+app.get('/playlists', function(req, res) {
+    // console.log(req.headers);
+    connection.query('SELECT * FROM playlists;', function(err, result) {
+        if (err) {
+            res.status(500).send('Database error');
+            return;
+        }
+        res.status(200);
+        res.setHeader("Content-type", "application/json");
+        res.send(result);
+    });
+});
 
 // app.post('/posts', function(req, res) {
 //     connection.query(`INSERT INTO posts (title, url, timestamp) VALUES (?, ?, NOW());`, [req.body.title, req.body.url], function(err, result) {
