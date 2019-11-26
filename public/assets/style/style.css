@@ -240,3 +240,31 @@ i {
     flex: 1 1 10%;
     width: 30px;
 }
+
+input[type=range] {
+    margin-top: 3px;
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    background: var(--another-blue);
+    height: 6px;
+    border-radius: 5px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: -3px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
