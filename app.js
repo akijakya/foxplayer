@@ -122,8 +122,8 @@ let trackData = function(filename) {
 
 // getTrackData('Organoid_-_09_-_Purple_Drift.mp3');
 
-// getting the track names in the music folder
 const files = fs.readdirSync(path.join(__dirname, 'public/assets/music'));
+    
 let trackNames = [];
 files.forEach(function (e) {
     if (e.slice(-2) !== 'MD') {
@@ -132,20 +132,22 @@ files.forEach(function (e) {
 });
 
 app.get('/playlist-tracks', async function(req, res) {
-    // connection.query('SELECT * FROM playlists;', function(err, result) {
-    //     if (err) {
-    //         res.status(500).send('Database error');
-    //         return;
-    //     }
-    //     res.status(200);
-    //     res.setHeader("Content-type", "application/json");
-    //     res.send(result);
-    // });
-    
-    let result = await trackData('Organoid_-_09_-_Purple_Drift.mp3')
-    res.status(200);
-    res.setHeader("Content-type", "application/json");
-    res.send(result);
+    let trackNamePromises = [];
+
+    trackNames.forEach(function(e) {
+        trackNamePromises.push (
+            new Promise (async function(resolve, reject) {
+                let result = await trackData(e);
+                resolve(result.title);
+            })
+        );
+    });
+
+    Promise.all(trackNamePromises).then(function(result) {
+        res.status(200);
+        res.setHeader("Content-type", "application/json");
+        res.send({"track-titles": result});
+    });
 });
 
 // app.put('/posts/:id/upvote', function(req, res) {
