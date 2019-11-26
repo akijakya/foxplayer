@@ -60,23 +60,23 @@ app.get('/playlists', function(req, res) {
     });
 });
 
-// app.post('/posts', function(req, res) {
-//     connection.query(`INSERT INTO posts (title, url, timestamp) VALUES (?, ?, NOW());`, [req.body.title, req.body.url], function(err, result) {
-//         if (err) {
-//             res.status(500).send('Database error');
-//             return;
-//         }
-//         connection.query('SELECT * FROM posts WHERE id=(SELECT max(id) FROM posts);', function(err, result) {
-//             if (err) {
-//                 res.status(500).send('Database error');
-//                 return;
-//             }
-//             res.status(200);
-//             res.setHeader("Content-type", "application/json");
-//             res.send(result[0]);
-//         });
-//     });
-// });
+app.post('/playlists', function(req, res) {
+    connection.query(`INSERT INTO playlists (playlist) VALUES (?);`, [req.body.name], function(err, result) {
+        if (err) {
+            res.status(500).send('Database error');
+            return;
+        }
+        connection.query('SELECT * FROM playlists WHERE id=(SELECT max(id) FROM playlists);', function(err, result) {
+            if (err) {
+                res.status(500).send('Database error');
+                return;
+            }
+            res.status(200);
+            res.setHeader("Content-type", "application/json");
+            res.send(result[0]);
+        });
+    });
+});
 
 // app.put('/posts/:id/upvote', function(req, res) {
 //     connection.query(`UPDATE posts SET score = score + 1 WHERE id = ?;`, [req.params.id], function(err, result) {
