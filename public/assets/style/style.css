@@ -213,6 +213,7 @@ i {
     background: #ffffff;
     display: flex;
     align-items: center;
+    color: var(--font-color);
 }
 
 #control-panel div {
