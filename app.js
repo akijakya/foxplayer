@@ -99,14 +99,15 @@ app.delete('/playlists/:id', function(req, res) {
 
 // GETTING INFO ABOUT THE TRACKS IN THE MUSIC FOLDER
 
-const trackPath = 'public/assets/music/';
+const trackPathForJS = 'public/assets/music/';
+const trackPathForHTML = 'assets/music/';
 
 const fs = require('fs');
 const mm = require('musicmetadata');
 
 let trackData = function(filename) {
     return new Promise (function(resolve, reject) {
-        let readableStream = fs.createReadStream(path.join(__dirname, trackPath + filename));
+        let readableStream = fs.createReadStream(path.join(__dirname, trackPathForJS + filename));
         mm(readableStream, { duration: true }, function (err, metadata) {
             if (err) throw err;
             readableStream.close();
@@ -122,7 +123,7 @@ let trackData = function(filename) {
 
 // getTrackData('Organoid_-_09_-_Purple_Drift.mp3');
 
-const files = fs.readdirSync(path.join(__dirname, 'public/assets/music'));
+const files = fs.readdirSync(path.join(__dirname, trackPathForJS));
     
 let trackNames = [];
 files.forEach(function (e) {
@@ -138,7 +139,7 @@ app.get('/playlist-tracks', function(req, res) {
         trackNamePromises.push (
             new Promise (async function(resolve, reject) {
                 let result = await trackData(e);
-                resolve(result.title);
+                resolve({"title": result.title, "artist": result.artist[0], "duration": result.duration, "path": trackPathForHTML + e});
             })
         );
     });
@@ -146,7 +147,7 @@ app.get('/playlist-tracks', function(req, res) {
     Promise.all(trackNamePromises).then(function(result) {
         res.status(200);
         res.setHeader("Content-type", "application/json");
-        res.send({"track-titles": result});
+        res.send(result);
     });
 });
 
