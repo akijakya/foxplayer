@@ -14,6 +14,14 @@ html, body {
     padding: 0;
 }
 
+html {
+    background: linear-gradient(var(--fox-light-green), var(--fox-dark-green));
+}
+
+body {
+    background: transparent;
+}
+
 /* all the font awesome icons to be the same color */
 i {
     color: var(--font-secondary);
