@@ -78,3 +78,11 @@ seekBar.addEventListener ('click', function () {
 });
 
 let volumeBar = document.querySelector('#volume-bar');
+
+volumeBar.addEventListener ('change', function () {
+    audio.volume = volumeBar.value / 10;
+});
+
+volumeBar.addEventListener ('click', function () {
+    audio.volume = volumeBar.value / 10;
+});
