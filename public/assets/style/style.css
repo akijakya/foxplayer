@@ -258,7 +258,7 @@ input[type=range] {
     margin-top: 3px;
     -webkit-appearance: none; 
     width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
     background: transparent;
 }
 
@@ -277,7 +277,6 @@ input[type=range]::-webkit-slider-thumb {
     border-radius: 50%;
     background: #ffffff;
     cursor: pointer;
-    /* margin-top: px; */
     box-shadow: -200px 0 0 195px var(--fox-light-green);
 }
 
