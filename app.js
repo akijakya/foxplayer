@@ -125,17 +125,20 @@ let trackData = function(filename) {
 
 const files = fs.readdirSync(path.join(__dirname, trackPathForJS));
     
-let trackNames = [];
-files.forEach(function (e) {
-    if (e.slice(-2) !== 'MD') {
-        trackNames.push(e);
-    }
-});
+function getTrackNames (){
+    let trackNames = [];
+    files.forEach(function (e) {
+        if (e.slice(-2) !== 'MD') {
+            trackNames.push(e);
+        }
+    });
+    return trackNames;
+}
 
 app.get('/playlist-tracks', function(req, res) {
     let trackNamePromises = [];
 
-    trackNames.forEach(function(e) {
+    getTrackNames().forEach(function(e) {
         trackNamePromises.push (
             new Promise (async function(resolve, reject) {
                 let result = await trackData(e);
