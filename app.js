@@ -122,10 +122,9 @@ let trackData = function(filename) {
 // };
 
 // getTrackData('Organoid_-_09_-_Purple_Drift.mp3');
-
-const files = fs.readdirSync(path.join(__dirname, trackPathForJS));
     
 function getTrackNames (){
+    let files = fs.readdirSync(path.join(__dirname, trackPathForJS));
     let trackNames = [];
     files.forEach(function (e) {
         if (e.slice(-2) !== 'MD') {
