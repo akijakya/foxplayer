@@ -62,7 +62,6 @@ let seekBar = document.querySelector('#seekbar');
 
 audio.addEventListener ('loadedmetadata', function () {
     seekBar.max = audio.duration;
-    console.log(seekBar);
 });
 
 audio.addEventListener ('timeupdate', function() {
