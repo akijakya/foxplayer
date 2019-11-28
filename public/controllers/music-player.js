@@ -2,6 +2,16 @@
 
 let audio = document.getElementsByTagName('audio')[0];
 
+// triggered when pressed the keys
+document.body.onkeyup = function(e){
+    if(e.keyCode == 32){ // spacebar
+        playPause();
+    }
+    if(e.keyCode == 27){ // esc
+        muteUnmute();
+    }
+}
+
 // PLAY/PAUSE FUNCTION
 
 function playPause () {
@@ -18,14 +28,8 @@ function playPause () {
 let playButton = document.getElementById('play-button').getElementsByTagName('i')[0];
 playButton.addEventListener('click', () => playPause(), false);
 
-// triggered when pressed the space bar
-document.body.onkeyup = function(e){
-    if(e.keyCode == 32){
-        playPause();
-    }
-}
-
-// in some browsers, when a track ends, it doesn't set the audio to paused mode, thats why:
+// in some browsers, when a track ends, it doesn't set the audio to paused mode, thats why
+// in this case the event should be to start playing the next song!!
 audio.addEventListener('ended', function(e) {
   audio.pause();
   playButton.className = 'fas fa-play';
@@ -80,8 +84,38 @@ let volumeBar = document.querySelector('#volume-bar');
 
 volumeBar.addEventListener ('change', function () {
     audio.volume = volumeBar.value / 10;
+    changeVolumeButton();
 });
 
 volumeBar.addEventListener ('click', function () {
     audio.volume = volumeBar.value / 10;
+    changeVolumeButton();
 });
+
+// VOLUME BUTTON
+let volumeButton = document.getElementById('volume-button').getElementsByTagName('i')[0];
+volumeButton.addEventListener ('click', () => muteUnmute(), false);
+let previousVolume = 5;
+
+function muteUnmute () {
+    if (volumeBar.value != 0) {
+        previousVolume = volumeBar.value;
+        volumeBar.value = 0;
+        audio.volume = volumeBar.value;
+        changeVolumeButton();
+    } else if (volumeBar.value == 0) {
+        volumeBar.value = previousVolume;
+        audio.volume = volumeBar.value / 10;
+        changeVolumeButton();
+    }
+}
+
+function changeVolumeButton () {
+    if(volumeBar.value == 0) {
+        volumeButton.className = 'fas fa-volume-mute';
+    } else if (volumeBar.value < 10){
+        volumeButton.className = 'fas fa-volume-down';
+    } else {
+        volumeButton.className = 'fas fa-volume-up';
+    }
+}
