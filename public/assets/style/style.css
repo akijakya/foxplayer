@@ -3,6 +3,8 @@
     --bg-darker-grey: #eaeaea;
     --selected-blue: #abe7e5;
     --another-blue: #43b5d2;
+    --fox-light-green: #3db879;
+    --fox-dark-green: #017335;
     --font-color: #585858;
     --font-secondary: #b2b2b2;
   }
@@ -252,15 +254,18 @@ i {
 }
 
 input[type=range] {
+    overflow: hidden;
     margin-top: 3px;
-    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-    width: 100%; /* Specific width is required for Firefox. */
-    background: transparent; /* Otherwise white in Chrome */
+    -webkit-appearance: none; 
+    width: 100%;
+    border-radius: 5px;
+    background: transparent;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-    background: linear-gradient(to left, var(--another-blue), var(--selected-blue));
-    height: 6px;
+    -webkit-appearance: none;
+    background: var(--bg-darker-grey);
+    height: 12px;
     border-radius: 5px;
 }
 
@@ -272,7 +277,8 @@ input[type=range]::-webkit-slider-thumb {
     border-radius: 50%;
     background: #ffffff;
     cursor: pointer;
-    margin-top: -3px;
+    /* margin-top: px; */
+    box-shadow: -200px 0 0 195px var(--fox-light-green);
 }
 
 input[type=range]:focus {
