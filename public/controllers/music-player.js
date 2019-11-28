@@ -59,4 +59,22 @@ audio.addEventListener("timeupdate", function() {
 // SEEKBAR AND VOLUME BAR
 
 let seekBar = document.querySelector('#seekbar');
+
+audio.addEventListener ('loadedmetadata', function () {
+    seekBar.max = audio.duration;
+    console.log(seekBar);
+});
+
+audio.addEventListener ('timeupdate', function() {
+    seekBar.value = audio.currentTime;
+});
+
+seekBar.addEventListener ('change', function () {
+    audio.currentTime = seekBar.value;
+});
+
+seekBar.addEventListener ('click', function () {
+    audio.currentTime = seekBar.value;
+});
+
 let volumeBar = document.querySelector('#volume-bar');
