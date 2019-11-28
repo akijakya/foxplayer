@@ -12,10 +12,12 @@ html, body {
     padding: 0;
 }
 
+/* all the font awesome icons to be the same color */
 i {
     color: var(--font-secondary);
 }
 
+/* the grid container that holds the music player */
 #grid-container {
     height: 420px;
     width: 700px;
@@ -31,6 +33,7 @@ i {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr 1.5fr;
 }
 
+/* TOP RIGHT CURRENTLY PLAYING PART */
 #currently-playing { 
     grid-area: 1 / 6 / 3 / 12; 
     display: flex;
@@ -75,6 +78,7 @@ i {
     padding-left: 5px;
 }
 
+/* ALBUM COVER */
 #album-cover { 
     grid-area: 1 / 4 / 5 / 6; 
     background-image: url(../img/music-placeholder.png);
@@ -83,6 +87,7 @@ i {
     background-size: contain;
 }
 
+/* LOGO */
 #fox-logo { 
     grid-area: 1 / 1 / 4 / 4; 
     display: flex;
@@ -93,6 +98,7 @@ i {
     margin: 15px;
 }
 
+/* PLAYLISTS */
 #new-playlist { 
     grid-area: 4 / 1 / 5 / 4; 
     display: flex;
@@ -141,6 +147,7 @@ i {
     background: var(--bg-light-grey);
 }
 
+/* TRACK LIST */
 #tracks { 
     grid-area: 3 / 6 / 11 / 12; 
     overflow-y: auto;
@@ -186,6 +193,11 @@ i {
     background: var(--bg-light-grey);
 }
 
+.active {
+    background-color: var(--selected-blue);
+}
+
+/* CUSTOM SCROLLBARS */
 #playlist::-webkit-scrollbar-track,
 #tracks::-webkit-scrollbar-track {
 	border-radius: 10px;
@@ -204,10 +216,7 @@ i {
     background-color: #c5c5c5;
 }
 
-.active {
-    background-color: var(--selected-blue);
-}
-
+/* BOTTOM CONTROL PANEL */
 #control-panel { 
     grid-area: 11 / 1 / 12 / 12; 
     background: #ffffff;
@@ -250,7 +259,7 @@ input[type=range] {
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-    background: var(--another-blue);
+    background: linear-gradient(to left, var(--another-blue), var(--selected-blue));
     height: 6px;
     border-radius: 5px;
 }
