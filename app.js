@@ -99,15 +99,14 @@ app.delete('/playlists/:id', function(req, res) {
 
 // GETTING INFO ABOUT THE TRACKS IN THE MUSIC FOLDER
 
-const trackPathForJS = 'public/assets/music/';
-const trackPathForHTML = 'assets/music/';
+const trackPath = 'assets/music/';
 
 const fs = require('fs');
 const mm = require('musicmetadata');
 
-let trackData = function(filename) {
+let trackData = function(filePath) {
     return new Promise (function(resolve, reject) {
-        let readableStream = fs.createReadStream(path.join(__dirname, trackPathForJS + filename));
+        let readableStream = fs.createReadStream(path.join(__dirname, "public/" + filePath));
         mm(readableStream, { duration: true }, function (err, metadata) {
             if (err) throw err;
             readableStream.close();
@@ -123,30 +122,30 @@ let trackData = function(filename) {
 
 // getTrackData('Organoid_-_09_-_Purple_Drift.mp3');
     
-function getTrackNames (){
-    let files = fs.readdirSync(path.join(__dirname, trackPathForJS));
-    let trackNames = [];
+function getTrackPaths (){
+    let files = fs.readdirSync(path.join(__dirname, "public/" + trackPath));
+    let trackPaths = [];
     files.forEach(function (e) {
         if (e.slice(-2) !== 'MD') {
-            trackNames.push(e);
+            trackPaths.push(trackPath + e);
         }
     });
-    return trackNames;
+    return trackPaths;
 }
 
 app.get('/playlist-tracks', function(req, res) {
-    let trackNamePromises = [];
+    let trackPromises = [];
 
-    getTrackNames().forEach(function(e) {
-        trackNamePromises.push (
+    getTrackPaths().forEach(function(e) {
+        trackPromises.push (
             new Promise (async function(resolve, reject) {
                 let result = await trackData(e);
-                resolve({"title": result.title, "artist": result.artist[0], "duration": result.duration, "path": trackPathForHTML + e});
+                resolve({"title": result.title, "artist": result.artist[0], "duration": result.duration, "path": e});
             })
         );
     });
 
-    Promise.all(trackNamePromises).then(function(result) {
+    Promise.all(trackPromises).then(function(result) {
         res.status(200);
         res.setHeader("Content-type", "application/json");
         res.send(result);
