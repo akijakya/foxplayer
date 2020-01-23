@@ -27,7 +27,7 @@ i {
     color: var(--font-secondary);
 }
 
-/* the grid container that holds the music player */
+/* the grid container that contains the music player */
 #grid-container {
     height: 420px;
     width: 700px;
